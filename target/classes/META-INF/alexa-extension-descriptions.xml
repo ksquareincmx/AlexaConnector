@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension-documentation>
+    <configs>
+        <config name="config">
+            <description><![CDATA[Default configuration]]></description>
+            <parameters/>
+        </config>
+    </configs>
+    <connections>
+        <connection name="connection">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="reconnection">
+                    <description><![CDATA[When the application is deployed, a connectivity test is performed on all connectors. If set to true, deployment will fail if the test doesn't pass after exhausting the associated reconnection strategy]]></description>
+                </parameter>
+                <parameter name="poolingProfile">
+                    <description><![CDATA[Characteristics of the connection pool]]></description>
+                </parameter>
+                <parameter name="consumerKey">
+                    <description><![CDATA[The OAuth consumerKey as registered with the service provider]]></description>
+                </parameter>
+                <parameter name="consumerSecret">
+                    <description><![CDATA[The OAuth consumerSecret as registered with the service provider]]></description>
+                </parameter>
+                <parameter name="authorizationUrl">
+                    <description><![CDATA[The service provider's authorization endpoint URL]]></description>
+                </parameter>
+                <parameter name="accessTokenUrl">
+                    <description><![CDATA[The service provider's accessToken endpoint URL]]></description>
+                </parameter>
+                <parameter name="scopes">
+                    <description><![CDATA[The OAuth scopes to be requested during the dance. If not provided, it will default to those in the annotation]]></description>
+                </parameter>
+                <parameter name="resourceOwnerId">
+                    <description><![CDATA[The resourceOwnerId which each component should use if it doesn't reference otherwise.]]></description>
+                </parameter>
+                <parameter name="before">
+                    <description><![CDATA[The name of a flow to be executed right before starting the OAuth dance]]></description>
+                </parameter>
+                <parameter name="after">
+                    <description><![CDATA[The name of a flow to be executed right after an accessToken has been received]]></description>
+                </parameter>
+                <parameter name="listenerConfig">
+                    <description><![CDATA[A reference to a <http:listener-config /> to be used in order to create the listener that will catch the access token callback endpoint.]]></description>
+                </parameter>
+                <parameter name="callbackPath">
+                    <description><![CDATA[The path of the access token callback endpoint]]></description>
+                </parameter>
+                <parameter name="authorizePath">
+                    <description><![CDATA[The path of the local http endpoint which triggers the OAuth dance]]></description>
+                </parameter>
+                <parameter name="externalCallbackUrl">
+                    <description><![CDATA[If the callback endpoint is behind a proxy or should be accessed through a non direct URL, use this parameter to tell the OAuth provider the URL it should use to access the callback]]></description>
+                </parameter>
+                <parameter name="objectStore">
+                    <description><![CDATA[A reference to the object store that should be used to store each resource owner id's data. If not specified, runtime will automatically provision the default one.]]></description>
+                </parameter>
+            </parameters>
+        </connection>
+    </connections>
+    <extension name="Alexa">
+        <description><![CDATA[This is the main class of an extension, is the entry point from which configurations, connection providers, operations and sources are going to be declared.]]></description>
+        <parameters/>
+    </extension>
+    <operations>
+        <operation name="DeleteSkill">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="skillId">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="outputMimeType">
+                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="UseExistingSkill">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="skillId">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="stage">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="requestType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="intentName">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="inputString">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="testSlots">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="outputMimeType">
+                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="createSkill">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="vendorId">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="summary">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="examplePhrases">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="keywords">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="skillName">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="description">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="endpoint">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="intents">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="outputMimeType">
+                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="getSkillInfo">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="skillId">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="outputMimeType">
+                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="unauthorize">
+            <description><![CDATA[Deletes all the access token information of a given resource owner id so that it's impossible to execute any operation for that user without doing the authorization dance again]]></description>
+            <parameters>
+                <parameter name="resourceOwnerId">
+                    <description><![CDATA[The id of the resource owner which access should be invalidated]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="customSkill">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="handlers">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="outputMimeType">
+                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+    </operations>
+    <sources/>
+    <types>
+        <type name="org.mule.modules.alexa.api.domain.intents.IntentValueParam">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="intentName">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="slots">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="samples">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="promts">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+    </types>
+</extension-documentation>
