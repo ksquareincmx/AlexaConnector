@@ -1,14 +1,14 @@
 {
   "name": "Alexa",
   "description": "This is the main class of an extension, is the entry point from which configurations, connection providers, operations and sources are going to be declared.",
-  "version": "1.0.19-SNAPSHOT",
+  "version": "1.0.97-SNAPSHOT",
   "vendor": "Mulesoft",
   "category": "COMMUNITY",
   "xmlDsl": {
     "prefix": "alexa",
     "namespace": "http://www.mulesoft.org/schema/mule/alexa",
     "schemaLocation": "http://www.mulesoft.org/schema/mule/alexa/current/mule-alexa.xsd",
-    "schemaVersion": "1.0.19-SNAPSHOT",
+    "schemaVersion": "1.0.97-SNAPSHOT",
     "xsdFileName": "mule-alexa.xsd"
   },
   "resources": [],
@@ -2752,42 +2752,23 @@
                     ],
                     "parent": "",
                     "genericTypes": [
-                      "java.lang.Object"
+                      "java.lang.String"
                     ],
                     "isMap": false
                   }
                 },
                 "item": {
-                  "type": "Object",
-                  "annotations": {
-                    "typeId": "java.lang.Object",
-                    "classInformation": {
-                      "classname": "java.lang.Object",
-                      "hasDefaultConstructor": true,
-                      "isInterface": false,
-                      "isInstantiable": true,
-                      "isAbstract": false,
-                      "isFinal": false,
-                      "implementedInterfaces": [],
-                      "parent": "",
-                      "genericTypes": [],
-                      "isMap": false
-                    },
-                    "typeAlias": {
-                      "value": "Object"
-                    }
-                  },
-                  "fields": []
+                  "type": "String"
                 }
               },
               "hasDynamicType": false,
               "required": true,
               "isConfigOverride": false,
-              "expressionSupport": "SUPPORTED",
+              "expressionSupport": "NOT_SUPPORTED",
               "role": "BEHAVIOUR",
               "dslConfiguration": {
                 "allowsInlineDefinition": true,
-                "allowsReferences": true,
+                "allowsReferences": false,
                 "allowTopLevelDefinition": false
               },
               "layoutModel": {

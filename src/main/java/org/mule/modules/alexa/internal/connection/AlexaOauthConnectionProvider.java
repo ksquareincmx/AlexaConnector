@@ -14,7 +14,7 @@ public class AlexaOauthConnectionProvider implements PoolingConnectionProvider<A
 	private final Logger LOGGER = LoggerFactory.getLogger(AlexaOauthConnectionProvider.class);
 
 	private AuthorizationCodeState state;
-
+   
 	@Override
 	public AlexaConnection connect() throws ConnectionException {
 		if (state.getAccessToken() == null) {
@@ -23,7 +23,7 @@ public class AlexaOauthConnectionProvider implements PoolingConnectionProvider<A
 
 		return new AlexaConnection(state.getAccessToken());
 	}
-
+    
 	@Override
 	public void disconnect(AlexaConnection connection) {
 		try {
@@ -31,8 +31,8 @@ public class AlexaOauthConnectionProvider implements PoolingConnectionProvider<A
 		} catch (Exception e) {
 			LOGGER.error("Error while disconnecting", e);
 		}
-	}
-
+	}  
+   
 	@Override
 	public ConnectionValidationResult validate(AlexaConnection connection) {
 		return ConnectionValidationResult.success();

@@ -3,7 +3,7 @@
     "id": "java",
     "attributes": {
       "type": "org.mule.modules.alexa.internal.extension.AlexaExtension",
-      "version": "1.0.19-SNAPSHOT"
+      "version": "1.0.97-SNAPSHOT"
     }
   },
   "name": "Alexa",

@@ -32,5 +32,14 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/alexa-skills-kit-1.5.0.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-core-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-servlet-support-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-apache-client-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-dynamodb-persistence-adapter-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-lambda-support-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-model-1.15.0.jar"/>
+	<classpathentry kind="lib" path="/Users/chaitanyachintalapati/Desktop/new_alexa_jar/ask-sdk-runtime-2.17.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

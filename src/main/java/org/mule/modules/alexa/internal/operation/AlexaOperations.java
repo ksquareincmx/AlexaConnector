@@ -3,12 +3,18 @@ package org.mule.modules.alexa.internal.operation;
 import static org.mule.runtime.api.meta.ExpressionSupport.SUPPORTED;
 import static org.mule.runtime.extension.api.annotation.param.MediaType.ANY;
 
+import java.io.Serializable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import org.apache.commons.lang3.SerializationUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,17 +24,24 @@ import org.mule.modules.alexa.internal.connection.AlexaConnection;
 import org.mule.modules.alexa.internal.util.AlexaRequestBuilder;
 import org.mule.modules.alexa.internal.util.AlexaRequestUtility;
 import org.mule.runtime.api.meta.ExpressionSupport;
+
 import org.mule.runtime.extension.api.annotation.Expression;
 import org.mule.runtime.extension.api.annotation.dsl.xml.ParameterDsl;
+import org.mule.runtime.extension.api.annotation.metadata.MetadataKeyId;
+import org.mule.runtime.extension.api.annotation.metadata.OutputResolver;
 import org.mule.runtime.extension.api.annotation.param.Connection;
 import org.mule.runtime.extension.api.annotation.param.MediaType;
 import org.mule.runtime.extension.api.annotation.param.NullSafe;
 import org.mule.runtime.extension.api.annotation.param.Optional;
+import org.mule.runtime.extension.api.annotation.param.ParameterGroup;
+import org.mule.runtime.extension.api.annotation.param.display.ClassValue;
+import org.springframework.util.ClassUtils;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.Skills;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
+import com.amazon.ask.dispatcher.request.handler.impl.LaunchRequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.request.handler.GenericRequestHandler;
 
@@ -118,33 +131,44 @@ public class AlexaOperations {
 	}
 	
 	@MediaType(value = ANY, strict = false)
-	public String customSkill(List<Object> handlers){
+	public String customSkill( @Expression(ExpressionSupport.NOT_SUPPORTED) @ParameterDsl(allowReferences = false) List<String> handlers){
 		
-		for(Object obj : handlers) {
-			System.out.println(obj.getClass());
-			System.out.println(obj instanceof RequestHandler);
+		List<GenericRequestHandler> handlerObjects = new ArrayList<GenericRequestHandler>();
+		
+		try {
+          List<RequestHandler> handlerObjects1 = new ArrayList<RequestHandler>();
+			
+			String className = "com.alexa.sdfc.handlers.LaunchRequestHandler"; 
+			
+			
+			// Get Class instance
+			Class<?> child = Class.forName(className);
+			ClassLoader classLoader = child.getClassLoader();
+			System.out.println("The system classLoader = "+ ClassLoader.getSystemClassLoader() +
+					"\n The classLoader loading our classes is = "+ classLoader);
+			
+			Class<?> parent = classLoader.loadClass("com.amazon.ask.dispatcher.request.handler.RequestHandler");
+			System.out.println("Child -----> " + child.getClassLoader());
+			System.out.println("Parent -----> " + parent.getClassLoader());
+			
+			//Class<?> requestHandler = (Class<?>) child.newInstance(); 
+			RequestHandler requestHandler = (RequestHandler) parent.cast(child.newInstance());
+			System.out.println("Object ---> "+ requestHandler);
+
+			
+			//RequestHandler requestHandler = (RequestHandler) parent.cast(child.newInstance());
+			//System.out.println("Object ---> "+ requestHandler);
+
+			
+
+			//Skill skill = Skills.standard().addRequestHandler((GenericRequestHandler<HandlerInput, java.util.Optional<Response>>) handlerObjects1).build();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		/*List<RequestHandler> handlerObjects = new ArrayList<RequestHandler>();
 		
-		for(String handler : handlers) {
-			try {
-				RequestHandler object = (RequestHandler) Class.forName(handler).newInstance();
-				System.out.println("=======> " + object.getClass());
-				if(!(object instanceof RequestHandler)) {
-					throw new IllegalArgumentException("Provided handler is not an instance of RequestHandler");
-				}
-				
-				
-				handlerObjects.add((RequestHandler) object);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}*/
 		
-		//Skill skillsHandlers = Skills.standard().addRequestHandlers(handlerObjects).build();
-		
-		return handlers.toString();
+		return "";
 	}
 }
